@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "description": "Sync schedule API with Google Calendar",
-  "main": "src/index.js",
+  "main": "src/handler.js",
   "scripts": {
     "start": "node ./src/index.js"
   },
