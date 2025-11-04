@@ -23,9 +23,14 @@ jobs:
 
       - name: Install Yandex CLI
         run: |
-          curl https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash
-          export PATH="$HOME/bin:$PATH"
-          yc version
+          curl -sSL https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash
+          export PATH=$PATH:/home/runner/yandex-cloud/
+
+      - name: Apply .bashrc changes
+        run: source "/home/runner/.bashrc"
+
+      - name: Test Yandex CLI
+        run: yc version
 
       - name: Authenticate Yandex Cloud
         run: |
