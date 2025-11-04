@@ -38,7 +38,6 @@ jobs:
             CALENDAR_ID=primary
             SCHEDULE_API_URL=https://study.miigaik.ru/api/v1/group/1512
             GOOGLE_REDIRECT_URI=https://developers.google.com/oauthplayground
-          secrets: |
             GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }}
             GOOGLE_CLIENT_SECRET=${{ secrets.GOOGLE_CLIENT_SECRET }}
             GOOGLE_REFRESH_TOKEN=${{ secrets.GOOGLE_REFRESH_TOKEN }}
