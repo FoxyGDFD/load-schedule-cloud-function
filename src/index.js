@@ -119,5 +119,3 @@ export async function handler(event, context) {
     body: JSON.stringify({ message: 'Sync completed', count: lessons.length })
   };
 }
-
-handler()
