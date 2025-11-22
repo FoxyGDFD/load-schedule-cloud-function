@@ -13,6 +13,10 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
+      - uses: actions/checkout@v3
+      - name: Write google service account JSON
+        run: echo "${{ secrets.GC_SERVICE_ACCOUNT }}" > service-account.json
+
       - name: Deploy Function to Yandex Cloud
         uses: yc-actions/yc-sls-function@v4
         with:
@@ -25,6 +29,7 @@ jobs:
             src/
             package.json
             package-lock.json
+            service-account.json
           exclude: |
             node_modules/
             .git/
@@ -35,12 +40,8 @@ jobs:
             commit-${{ github.sha }}
           environment: |
             NODE_ENV=production
-            CALENDAR_ID=primary
+            CALENDAR_ID=${{ secrets.GC_CALENDAR_ID }}
             SCHEDULE_API_URL=https://study.miigaik.ru/api/v1/group/1512
-            GOOGLE_REDIRECT_URI=https://developers.google.com/oauthplayground
-            GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }}
-            GOOGLE_CLIENT_SECRET=${{ secrets.GOOGLE_CLIENT_SECRET }}
-            GOOGLE_REFRESH_TOKEN=${{ secrets.GOOGLE_REFRESH_TOKEN }}
           async: true
           memory: "128Mb"
           execution-timeout: 10s
