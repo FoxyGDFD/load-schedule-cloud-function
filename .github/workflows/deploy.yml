@@ -15,7 +15,7 @@ jobs:
 
       - uses: actions/checkout@v3
       - name: Write google service account JSON
-        run: echo "${{ secrets.GC_SERVICE_ACCOUNT }}" > service-account.json
+        run: echo "${{ secrets.GC_SERVICE_ACCOUNT_BASE64 }}" | base64 --decode > service-account.json
 
       - name: Deploy Function to Yandex Cloud
         uses: yc-actions/yc-sls-function@v4
