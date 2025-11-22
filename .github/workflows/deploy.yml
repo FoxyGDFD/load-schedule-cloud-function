@@ -35,8 +35,6 @@ jobs:
             .git/
             .github/
           tags: |
-            latest
-            build-${{ github.run_number }}
             commit-${{ github.sha }}
           environment: |
             NODE_ENV=production
